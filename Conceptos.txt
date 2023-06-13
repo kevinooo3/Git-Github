@@ -1,0 +1,72 @@
+Configurar git para uso profesional :
+	git config --global  user.name "nombre del usuario que quieras" : cambia el nombre del usuario
+	git config --global user.email "kevinooo@gmail.com"
+	git config --list : ver los cambios de las configuraciones
+
+Comandos para el repositorio local:
+
+	git init : para empezar a usar el git en la carpeta
+	git add nombreDoc :Agregar el doc ala ram
+	git add . :agarra todos los archivos traqueados que tuvieron cambios y los sube al limbo o la ram hehe
+	git rm --cached nombreDoc :Ctrl z al ultimo git add realizado
+	git commit -m "mensaje" : agrega el archivo con cambios al repositorio
+	git commit -am "mensaje": agrega todos los archivos anteriormente addeados 
+	
+	git status : sirve para saber si aun existen archivos que no han sido commiteados
+
+Cambios 
+	git log: muestra todos la cantidad de cambios que le pasaron en el hash
+	git log nombreDoc : para ver todos los cambios que le pasaron al archivo
+	git show : muestra los ultimos cambios del doc respecto al penultima edicion
+	git diff hash1 hash2: compara dos commits historiales
+	git diff : muestra la diferencias entre disco duro y staging
+Volver en el tiempo
+	git reset 22302d413883codigohash --hard :borramos todo lo que se hizo despues del hash seleccionado 
+	git checkout 22302d413883codigohash nombreArchivo : volver a un hash anterior especifico
+
+Ramas:
+	master: Generalmente es la rama por defecto, es la rama que al comienzo se trabaja
+	head: es donde apunta la cabecera , es decir a que hash del historial del repositorio del archivo se esta 
+		apuntando actualmente
+	git status: puedes ver la rama en la que estamos actualmente, y donde el head apunta actualmente
+	git show : tambien permite ver donde estamos trabajando actualmente
+	git branch : nos informa en que rama estamos actualmenteG
+	git branch nombreRama : creamos una nueva rama apartir del head donde estamos parados
+	git checkout nombreRama: nos movemos de rama
+	git merge nombreRama: hace una union de la otra rama llamada nombreRama en este caso, al head de la rama 
+		en la que estamos actualmente.
+	git show-branch: muestra las ramas con mayor detalle.
+	git show-branch --all: muestra todo todo.
+	gitk : muestra en otra ventana todas las ramas.
+REPOSITORIO REMOTO
+	git remote add NOMBREREPQUEELIJAMOS https//githubs.blalalblal: agrega un repositorio remoto a nuesto git local
+	git remote : informa cuantos y cuales son mis repositorios remotos
+	git remote -v : informe mas detellado de los rep remotos
+ 	git pull nombreRepRemoto master : trae todo el rep remoto al rep local
+	git pull nombreRepRemoto master --allow-unrelated-histories: permite jalar rep remoto a rep local cuando no nos deja con el metodo normal, ya que son historias no relacionadas. 
+	git push nombreRepRemoto rama : envia mi rep local al rep remoto	
+
+GIT LOG :
+	git log --all : muestra todo el historial del rep
+	git log --all --graph: muestra todo el historial pero con graficos para mejorar la visualizacion de los cambios.
+	git log --all --graph --decorate --oneline: para ver mas resumida y con  graficos los cambios en el rep.
+GIT TAG
+	git tag -a  v0.1 -m "mensaje" codigohash : crea un tag asociado a un hash
+	git tag: informa todos los tag existentes
+	git show-ref --tags : informa la lista de tags y sus hash correspondientes
+	git push repRemoto --tags : envia los tags a el rep remoto
+SOLUCION DE ERRORES
+	git rebase sirve para eliminar unir una rama alterna a master y despues eliminar rastro de la rama alterna.
+	Solo se debe hacer en rep local, generalmente para solucion de errores. 
+	git rebase master : esto se hace desde la rama alterna es decir checkout debe estar en ramaalterna.
+	git rebase ramaalterna :  esto se hace desde la rama master .
+	git stash: se usa como ctrl z en word.
+ 
+	git clean -f : eliminar archivos que fueron creados pero aun no les diste add, ojo solo archivos y no carpetas.
+
+	git cherry-pick codigohash: trae el commit especifico de otra rama a nuestra rama actual.
+herramienta poderosa: en casos de eliminar o hacer cosas que no deseamos.
+	git reflog : permite ver todolos commits aun los hayas borrado.Para ubicar el codigo del commit en el q el cod 	esta bien.
+	git reset --HARD codigoReflog : recupera todo hasta el momento donde estaba el codigoReflog
+
+	git commit --amend: hace commit pero al ultimo commit es decir no crea un nuevo commit solo aplica los cambios a el ultimo commit en el historial.
